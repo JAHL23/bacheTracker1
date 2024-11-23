@@ -3,9 +3,12 @@ from ultralytics import YOLO
 import uvicorn
 from PIL import Image
 import io
+import os
 
 # Cargar el modelo
-modelo = YOLO("model/best.pt")
+model_path = os.path.join("model", "best.pt")
+
+modelo = YOLO(model_path)
 
 # Crear la aplicación FastAPI
 app = FastAPI()
