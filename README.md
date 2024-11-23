@@ -1,1 +1,5 @@
 # bacheTracker1
+
+El problema de los baches en las calles es una preocupación significativa para la seguridad vial y el mantenimiento de infraestructuras. Los baches pueden causar daños a los vehículos, aumentar el riesgo de accidentes y generar costos elevados de reparación. La detección y clasificación temprana de baches permite a las autoridades tomar medidas preventivas y correctivas de manera más eficiente.
+
+Este proyecto tiene como objetivo desarrollar un modelo de clasificación de baches en tiempo real utilizando la tecnología YOLO (You Only Look Once). YOLO es una técnica avanzada de detección de objetos que permite identificar y clasificar objetos en imágenes y videos con alta precisión y velocidad. Al implementar este modelo, buscamos proporcionar una herramienta eficaz para la detección automática de baches, mejorando así la seguridad y el mantenimiento de las carreteras.
