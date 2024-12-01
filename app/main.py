@@ -6,7 +6,7 @@ import io
 app = FastAPI()
 
 # Cargar el modelo YOLO
-model = YOLO('best.pt')
+model = YOLO('best81.pt')
 
 # Función para preprocesar la imagen
 def preprocess_image(image: Image.Image) -> Image.Image:
