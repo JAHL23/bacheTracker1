@@ -5,8 +5,9 @@ import io
 
 app = FastAPI()
 
-# Cargar el modelo YOLO una sola vez para evitar recargarlo en cada solicitud
+# Cargar el modelo YOLO
 model = YOLO('best.pt')
+
 
 # Función para preprocesar la imagen
 def preprocess_image(image: Image.Image) -> Image.Image:
