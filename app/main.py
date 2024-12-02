@@ -6,7 +6,7 @@ import io
 app = FastAPI()
 
 # Ruta al modelo YOLO
-model = YOLO(r'C:\Users\Usuario\OneDrive\Documentos\Proyecto I\bacheTracker1\app\best.pt')
+model = YOLO('best81.pt')
 
 # Ruta raíz para evitar el error 404
 @app.get("/")
