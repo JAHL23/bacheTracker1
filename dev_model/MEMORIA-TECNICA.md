@@ -99,7 +99,7 @@ Documenta los resultados obtenidos del modelo.
 
 ![Matriz de confusión](https://github.com/JAHL23/bacheTracker1/blob/main/images/confusion_matrix.png)
 
-![Precision Recall Curve](https://github.com/JAHL23/bacheTracker1/blob/main\images/PR_curve.png)
+![Precision Recall Curve](https://github.com/JAHL23/bacheTracker1/blob/main/images/PR_curve.png)
 
 El modelo tiene un buen balance entre precisión y exhaustividad, con un mAP promedio de 0.756, lo cual indica que el modelo realiza predicciones razonablemente confiables y es capaz de identificar una proporción adecuada de baches.
 
