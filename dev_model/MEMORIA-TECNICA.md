@@ -109,7 +109,7 @@ El modelo tiene un buen balance entre precisión y exhaustividad, con un mAP pro
 
 Ahora veamos la curva F1
 
-![Precision-Confidence](\images\F1_curve.png)
+![Precision-Confidence](bacheTracker1/blob/main/images/F1_curve.png)
 
 En general, esta curva sugiere que el modelo tiene un rendimiento aceptable y que el umbral óptimo de confianza está bien definido.
 
