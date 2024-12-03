@@ -122,6 +122,13 @@ Ahora veamos la curva F1
 
 En general, esta curva sugiere que el modelo tiene un rendimiento aceptable y que el umbral óptimo de confianza está bien definido.
 
+
+veamos como se comporta el modelo con algunas imagenes del conjunto de validación:
+
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/val_batch2_pred.jpg" width="50%" />
+</p>
+
 ### Conclusiones
 
 El desarrollo del modelo basado en YOLOv8 para la detección de baches ha demostrado ser una solución efectiva en la identificación de irregularidades en superficies viales. A través del entrenamiento y validación, el modelo alcanzó una precisión máxima de 1.0 a un nivel de confianza de 0.821, lo que indica un alto grado de exactitud en las predicciones realizadas.
