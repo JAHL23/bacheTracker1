@@ -76,7 +76,7 @@ YOLO utiliza una red neuronal convolucional (CNN) optimizada para realizar detec
 
 1. Backbone
 
-El wwwbackbone es una CNN preentrenada, como Darknet, que extrae características importantes de la imagen. En las versiones más recientes, como YOLOv5 y YOLOv8, se han adoptado arquitecturas más ligeras y rápidas.
+El backbone es una CNN preentrenada, como Darknet, que extrae características importantes de la imagen. En las versiones más recientes, como YOLOv5 y YOLOv8, se han adoptado arquitecturas más ligeras y rápidas.
 
 2. Cabeza de Predicción
 
@@ -97,11 +97,9 @@ Documenta los resultados obtenidos del modelo.
 
 ### Matriz de confusión.
 
-![Matriz de confusión](https://github.com/JAHL23/bacheTracker1/blob/main/images/confusion_matrix.png){width=40%}
+<img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/confusion_matrix.png" width="40%" />
 
-
-![Precision Recall Curve](https://github.com/JAHL23/bacheTracker1/blob/main/images/PR_curve.png){width=40%}
-)
+<img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/PR_curve.png" width="40%" />
 
 El modelo tiene un buen balance entre precisión y exhaustividad, con un mAP promedio de 0.756, lo cual indica que el modelo realiza predicciones razonablemente confiables y es capaz de identificar una proporción adecuada de baches.
 
