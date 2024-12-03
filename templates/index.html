@@ -79,39 +79,14 @@
         .result.error {
             color: #d9534f;
         }
-        .alert {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-            font-size: 0.9rem;
-            opacity: 0;
-            animation: fadeInOut 5s forwards;
-            z-index: 1000;
-        }
-        @keyframes fadeInOut {
-            0% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(-10px);
-            }
-            10%, 90% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(-10px);
-            }
-        }
         footer {
             margin-top: 20px;
             font-size: 0.8rem;
             color: #aaa;
+        }
+        img {
+            width: 500px; /* Ajustar el tamaño  */
+            height: auto; 
         }
     </style>
 </head>
@@ -150,9 +125,12 @@
                 });
 
                 if (!response.ok) throw new Error("Error en el servidor");
-                
-                const data = await response.json();
-                resultDiv.textContent = `Predicción: ${data.prediction}`;
+
+                // Mostrar la imagen recibida como respuesta
+                const imgBlob = await response.blob();
+                const imgUrl = URL.createObjectURL(imgBlob);
+
+                resultDiv.innerHTML = `<img src="${imgUrl}" alt="Predicción" />`;
                 resultDiv.style.display = "block";
             } catch (error) {
                 resultDiv.textContent = "Error al procesar la imagen. Por favor, intenta de nuevo.";

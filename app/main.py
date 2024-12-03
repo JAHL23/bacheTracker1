@@ -1,16 +1,15 @@
 from fastapi import FastAPI, UploadFile, File, HTTPException
 from ultralytics import YOLO
-from PIL import Image, UnidentifiedImageError
+from PIL import Image, UnidentifiedImageError, ImageDraw
 import io
 from fastapi.templating import Jinja2Templates
 from fastapi.requests import Request
-from fastapi.responses import JSONResponse
+from fastapi.responses import StreamingResponse
 import logging
 
 app = FastAPI()
 
 # Rutas para los templates
-
 templates = Jinja2Templates(directory="templates")
 
 # Ruta al modelo YOLO
@@ -34,60 +33,40 @@ async def predict(file: UploadFile = File(...)):
     """
     Endpoint que recibe una imagen y devuelve las anotaciones del modelo YOLO.
     """
-    
-    
     try:
         # Leer la imagen subida
-        
         image_bytes = await file.read()
         image = Image.open(io.BytesIO(image_bytes))
 
-        
-        # Preprocesar la imagen (función que debería estar definida previamente)
+        # Preprocesar la imagen
         image = preprocess_image(image)
 
         # Hacer predicciones con el modelo YOLO
-        print('Antes del predict')
-        results = model.predict(image) ### Aqui da el error 500
-        print('Predict realizado')
-        
-        # Asegurarnos de que 'results' contiene lo que esperamos
-        annotations = []
-        if hasattr(results, 'boxes') and results.boxes:
-            for box in results.boxes:
-                annotations.append({
-                    "label": box.label,
-                    "confidence": box.confidence,
-                    "coordinates": box.xyxy.tolist()
-                })
-        else:
-            raise ValueError("El modelo no devolvió resultados válidos.")
+        results = model.predict(image)
 
-        # Si no se encuentra ninguna anotación, retornar un mensaje vacío
-        if not annotations:
-            return JSONResponse(
-                status_code=200,
-                content={"message": "No se detectaron objetos en la imagen."}
-            )
+        # Dibujar las bounding boxes en la imagen
+        draw = ImageDraw.Draw(image)
+        for result in results[0].boxes.data:  # Asumiendo que YOLO devuelve predicciones de esta forma
+            box = result[:4].tolist()  # Coordenadas de la caja (xyxy)
+            label = int(result[5])  # Etiqueta del objeto (asumiendo que es el índice de la clase)
+            
+            # Dibujar la caja
+            draw.rectangle([box[0], box[1], box[2], box[3]], outline="red", width=3)
+            draw.text((box[0], box[1]), str(label), fill="red")
 
-        # Retornar las anotaciones como JSON
-        return JSONResponse(
-            status_code=200,
-            content={"annotations": annotations}
-        )
+        # Convertir la imagen a bytes
+        img_byte_arr = io.BytesIO()
+        image.save(img_byte_arr, format='PNG')
+        img_byte_arr.seek(0)
+
+        # Devolver la imagen con las bounding boxes
+        return StreamingResponse(img_byte_arr, media_type="image/png")
 
     except UnidentifiedImageError:
         raise HTTPException(status_code=400, detail="La imagen subida no es válida o no se puede procesar.")
     except ValueError as ve:
         raise HTTPException(status_code=400, detail=f"Error en el modelo: {str(ve)}")
     except Exception as e:
-        raise HTTPException(status_code=500, detail=f"Error interno: {str(e)}")
-
-    except UnidentifiedImageError:
-        # Error específico para una imagen inválida
-        raise HTTPException(status_code=400, detail="La imagen subida no es válida o no se puede procesar.")
-    except Exception as e:
-        print(f"Error interno: {str(e)}")
         raise HTTPException(status_code=500, detail=f"Error interno: {str(e)}")
 
 if __name__ == "__main__":
