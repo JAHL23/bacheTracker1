@@ -99,6 +99,7 @@ Documenta los resultados obtenidos del modelo.
 
 ![Matriz de confusión](https://github.com/JAHL23/bacheTracker1/blob/main/images/confusion_matrix.png){width=40%}
 
+
 ![Precision Recall Curve](https://github.com/JAHL23/bacheTracker1/blob/main/images/PR_curve.png){width=40%}
 )
 
