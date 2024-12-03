@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Baches Detección</title>
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(to bottom right, #eef2f3, #8e9eab);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #444;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+        h1 {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 15px;
+        }
+        p {
+            font-size: 1rem;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+        input[type="file"] {
+            border: 2px dashed #aaa;
+            padding: 10px;
+            border-radius: 10px;
+            cursor: pointer;
+            background: #f9f9f9;
+            transition: border-color 0.3s ease;
+        }
+        input[type="file"]:hover {
+            border-color: #007BFF;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1rem;
+            color: #28a745;
+            display: none;
+        }
+        .result.error {
+            color: #d9534f;
+        }
+        .alert {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            font-size: 0.9rem;
+            opacity: 0;
+            animation: fadeInOut 5s forwards;
+            z-index: 1000;
+        }
+        @keyframes fadeInOut {
+            0% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-10px);
+            }
+            10%, 90% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-10px);
+            }
+        }
+        footer {
+            margin-top: 20px;
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="alert" id="apiAlert">La API está disponible en: <strong>/predict/</strong></div>
+    <div class="container">
+        <h1>Predicción de Baches</h1>
+        <p>Sube una imagen para obtener una predicción de nuestro modelo.</p>
+        <form id="uploadForm" action="/predict/" method="post" enctype="multipart/form-data">
+            <input type="file" name="file" accept="image/*" required>
+            <button type="submit">Subir Imagen</button>
+        </form>
+        <div class="result" id="result"></div>
+        <footer>© 2024 Jorge Herrera León | Todos los derechos reservados.</footer>
+    </div>
+    <script>
+        const form = document.getElementById('uploadForm');
+        const resultDiv = document.getElementById('result');
+        const alertDiv = document.getElementById('apiAlert');
+
+        alertDiv.addEventListener('animationend', () => {
+            alertDiv.style.display = 'none';
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const formData = new FormData(form);
+
+            resultDiv.style.display = "none";
+            resultDiv.classList.remove("error");
+            
+            try {
+                const response = await fetch('/predict/', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) throw new Error("Error en el servidor");
+                
+                const data = await response.json();
+                resultDiv.textContent = `Predicción: ${data.prediction}`;
+                resultDiv.style.display = "block";
+            } catch (error) {
+                resultDiv.textContent = "Error al procesar la imagen. Por favor, intenta de nuevo.";
+                resultDiv.classList.add("error");
+                resultDiv.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
