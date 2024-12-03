@@ -76,7 +76,7 @@ YOLO utiliza una red neuronal convolucional (CNN) optimizada para realizar detec
 
 1. Backbone
 
-El wwwbackbone es una CNN preentrenada, como Darknet, que extrae características importantes de la imagen. En las versiones más recientes, como YOLOv5 y YOLOv8, se han adoptado arquitecturas más ligeras y rápidas.
+El backbone es una CNN preentrenada, como Darknet, que extrae características importantes de la imagen. En las versiones más recientes, como YOLOv5 y YOLOv8, se han adoptado arquitecturas más ligeras y rápidas.
 
 2. Cabeza de Predicción
 
@@ -97,21 +97,37 @@ Documenta los resultados obtenidos del modelo.
 
 ### Matriz de confusión.
 
-![Matriz de confusión](..\images\confusion_matrix.png)
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/confusion_matrix.png" width="50%" />
+</p>
 
-![Precision Recall Curve](..\images\PR_curve.png)
-
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/PR_curve.png" width="50%" />
+</p>
 El modelo tiene un buen balance entre precisión y exhaustividad, con un mAP promedio de 0.756, lo cual indica que el modelo realiza predicciones razonablemente confiables y es capaz de identificar una proporción adecuada de baches.
 
-![Precision-Confidence](..\images\P_curve.png)
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/P_curve.png" width="50%" />
+</p>
 
 "all classes 1.00 at 0.821": Sugiere que, al considerar todas las clases, el modelo alcanza una precisión máxima de 1.0 a un nivel de confianza de 0.821.
 
 Ahora veamos la curva F1
 
-![Precision-Confidence](..\images\F1_curve.png)
+
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/F1_curve.png" width="50%" />
+</p>
+
 
 En general, esta curva sugiere que el modelo tiene un rendimiento aceptable y que el umbral óptimo de confianza está bien definido.
+
+
+veamos como se comporta el modelo con algunas imagenes del conjunto de validación:
+
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/val_batch2_pred.jpg" width="50%" />
+</p>
 
 ### Conclusiones
 
