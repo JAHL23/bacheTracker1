@@ -11,11 +11,12 @@
     - [Construcción del modelo](#construcción-del-modelo)
     - [Sobre el dataset](#sobre-el-dataset)
     - [Entrenamiento del modelo](#entrenamiento-del-modelo)
-    - [Funcionamiento del modelo YOLO8](#funcionamiento-del-modelo-yolo8)
+    - [Funcionamiento del modelo YOLO](#funcionamiento-del-modelo-yolo)
+  - [Arquitectura de YOLO](#arquitectura-de-yolo)
     - [Resultados modelo](#resultados-modelo)
-    - [Pruebas sobre el modelo](#pruebas-sobre-el-modelo)
+  - [Pruebas sobre el modelo](#pruebas-sobre-el-modelo)
+    - [Matriz de confusión.](#matriz-de-confusión)
     - [Conclusiones](#conclusiones)
-  - [Conclusiones generales](#conclusiones-generales)
   - [Anexos](#anexos)
 
 ## Portada
@@ -63,21 +64,61 @@ Para preprocesar los datos, escalamos a 640*640 pixeles.
 
 Se utilizó un modelo preentrenado YOLOv8 (yolov8l.pt) y se realizó fine-tuning con un conjunto de datos específico de baches. El entrenamiento se llevó a cabo durante 45 épocas con imágenes de tamaño 640x640.
 
-### Funcionamiento del modelo YOLO8
+### Funcionamiento del modelo YOLO
 
+YOLO ("You Only Look Once") es una familia de algoritmos de visión por computadora diseñados para la detección de objetos en imágenes y videos en tiempo real. A diferencia de otros métodos de detección, YOLO procesa la imagen completa en una sola pasada por la red neuronal, logrando alta precisión y velocidad. Esta capacidad la hace ideal para aplicaciones como vigilancia, robótica, conducción autónoma y más.
+
+
+## Arquitectura de YOLO
+
+YOLO utiliza una red neuronal convolucional (CNN) optimizada para realizar detección de objetos. Aquí están los componentes clave:
+
+1. Backbone
+
+El wwwbackbone es una CNN preentrenada, como Darknet, que extrae características importantes de la imagen. En las versiones más recientes, como YOLOv5 y YOLOv8, se han adoptado arquitecturas más ligeras y rápidas.
+
+2. Cabeza de Predicción
+
+Se encarga de generar las predicciones finales basadas en las características extraídas. Incluye:
+
+Coordenadas de las bounding boxes.
+
+Confianza para cada predicción.
+
+Distribuciones de probabilidad para cada clase.
+
+La salida del modelo, son coordenadas de bounding boxes, etiquetas de clase y puntajes de confianza.
 
 ### Resultados modelo
 Documenta los resultados obtenidos del modelo.
 
-### Pruebas sobre el modelo
-Describe las pruebas realizadas sobre el modelo.
+## Pruebas sobre el modelo
+
+### Matriz de confusión.
+
+![Matriz de confusión](..\app\models\runs\detect81\val\confusion_matrix.png)
+
+![Precision Recall Curve](..\app\models\runs\detect81\val\PR_curve.png)
+
+El modelo tiene un buen balance entre precisión y exhaustividad, con un mAP promedio de 0.756, lo cual indica que el modelo realiza predicciones razonablemente confiables y es capaz de identificar una proporción adecuada de baches.
+
+![Precision-Confidence](..\app\models\runs\detect81\val\P_curve.png)
+
+"all classes 1.00 at 0.821": Sugiere que, al considerar todas las clases, el modelo alcanza una precisión máxima de 1.0 a un nivel de confianza de 0.821.
+
+Ahora veamos la curva F1
+
+![Precision-Confidence](..\app\models\runs\detect81\val\F1_curve.png)
+
+En general, esta curva sugiere que el modelo tiene un rendimiento aceptable y que el umbral óptimo de confianza está bien definido.
 
 ### Conclusiones
-Conclusiones específicas de cada modelo probado.
 
-## Conclusiones generales
-Presenta las conclusiones globales del proyecto.
+El desarrollo del modelo basado en YOLOv8 para la detección de baches ha demostrado ser una solución efectiva en la identificación de irregularidades en superficies viales. A través del entrenamiento y validación, el modelo alcanzó una precisión máxima de 1.0 a un nivel de confianza de 0.821, lo que indica un alto grado de exactitud en las predicciones realizadas.
+
+Las curvas de precisión y F1 obtenidas sugieren que el modelo mantiene un rendimiento consistente y que el umbral de confianza seleccionado es óptimo para el balance entre precisión y recall. Sin embargo, se reconoce la importancia de continuar ajustando hiperparámetros y ampliando el conjunto de datos para mejorar aún más la capacidad de generalización del modelo.
 
 ## Anexos
-- Referencias al código realizado.
-- Repositorio en GitHub del proyecto.
+- [Repositorio Github](https://github.com/JAHL23/bacheTracker1)
+- [Conjunto de Datos para la Detección de baches en Roboflow](https://universe.roboflow.com/projects-hjaax/pothole-detection-using-yolov5/dataset/1)
+- [Documentación ultralytics](https://docs.ultralytics.com/guides/)
