@@ -99,17 +99,17 @@ Documenta los resultados obtenidos del modelo.
 
 ![Matriz de confusión](https://github.com/JAHL23/bacheTracker1/blob/main/images/confusion_matrix.png)
 
-![Precision Recall Curve](https://github.com/JAHL23/bacheTracker1/blob/main\images\PR_curve.png)
+![Precision Recall Curve](https://github.com/JAHL23/bacheTracker1/blob/main\images/PR_curve.png)
 
 El modelo tiene un buen balance entre precisión y exhaustividad, con un mAP promedio de 0.756, lo cual indica que el modelo realiza predicciones razonablemente confiables y es capaz de identificar una proporción adecuada de baches.
 
-![Precision-Confidence](https://github.com/JAHL23/bacheTracker1/blob/main\images\P_curve.png)
+![Precision-Confidence](https://github.com/JAHL23/bacheTracker1/blob/main/images/P_curve.png)
 
 "all classes 1.00 at 0.821": Sugiere que, al considerar todas las clases, el modelo alcanza una precisión máxima de 1.0 a un nivel de confianza de 0.821.
 
 Ahora veamos la curva F1
 
-![Precision-Confidence]([bacheTracker1/blob/main](https://github.com/JAHL23/bacheTracker1/blob/main)/images/F1_curve.png)
+![Precision-Confidence](https://github.com/JAHL23/bacheTracker1/blob/main/images/F1_curve.png)
 
 En general, esta curva sugiere que el modelo tiene un rendimiento aceptable y que el umbral óptimo de confianza está bien definido.
 
