@@ -97,7 +97,7 @@ Documenta los resultados obtenidos del modelo.
 
 ### Matriz de confusión.
 
-![Matriz de confusión](..\images\confusion_matrix.png)
+![Matriz de confusión](https://github.com/usuario/repositorio/raw/rama/images/confusion_matrix.png)
 
 ![Precision Recall Curve](..\images\PR_curve.png)
 
