@@ -11,6 +11,7 @@
     - [Construcción del modelo](#construcción-del-modelo)
     - [Sobre el dataset](#sobre-el-dataset)
     - [Extracción de datos.](#extracción-de-datos)
+    - [Formato](#formato)
     - [Entrenamiento del modelo](#entrenamiento-del-modelo)
     - [Funcionamiento del modelo YOLO](#funcionamiento-del-modelo-yolo)
   - [Arquitectura de YOLO](#arquitectura-de-yolo)
@@ -66,15 +67,29 @@ tenemos un total de 665 imagenes, no se realizo data augmentation.
 
 Solo tenemos un tipo de clase(**bache**).
 
+**Ejemplo de las anotaciones en imagenes con baches**
+
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/data_anotated.png" width="50%" />
+</p>
+
+
 Para preprocesar los datos, escalamos a 640*640 pixeles.
 
 ### Extracción de datos.
 
-Para extraer los datos de **Roboflow** tenemos dos maneras, una manera es usar la API de roboflow, sin embargo es necesario tener una cuenta en la pagina para hacer uso de la API.(**SHow download code**)
-
+Para extraer los datos de **Roboflow** tenemos dos maneras, una manera es usar la API de roboflow, sin embargo es necesario tener una cuenta en la pagina para hacer uso de la API.(**Show download code**)
 
 Otra manera es descargar el dataset(**Download zip to computer**) y subirlo a la nube de drive o usar files de google.colab para poder usar archivos locales en colab.
 
+### Formato
+
+Imágenes: Se almacenan en una carpeta llamada images, y pueden estar divididas en subcarpetas como train, valid y test.
+Anotaciones: Se guardan en una carpeta llamada labels, con la misma estructura que la carpeta de imágenes.
+Cada archivo de anotación es un archivo .txt que corresponde a una imagen y tiene el mismo nombre.
+Los archivos de anotación contienen las etiquetas y las coordenadas de los cuadros delimitadores en el formato YOLO:
+
+**<class_id> <x_center> <y_center> <width> <height>**
 
 ### Entrenamiento del modelo
 
