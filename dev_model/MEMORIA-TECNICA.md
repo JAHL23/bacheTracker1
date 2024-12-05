@@ -13,9 +13,11 @@
     - [Entrenamiento del modelo](#entrenamiento-del-modelo)
     - [Funcionamiento del modelo YOLO](#funcionamiento-del-modelo-yolo)
   - [Arquitectura de YOLO](#arquitectura-de-yolo)
-    - [Resultados modelo](#resultados-modelo)
-  - [Pruebas sobre el modelo](#pruebas-sobre-el-modelo)
+  - [Pruebas sobre el modelo yolo8s](#pruebas-sobre-el-modelo-yolo8s)
     - [Matriz de confusión.](#matriz-de-confusión)
+    - [otras gráficas.](#otras-gráficas)
+  - [Pruebas sobre el modelo yolo8l](#pruebas-sobre-el-modelo-yolo8l)
+    - [Matriz de confusión.](#matriz-de-confusión-1)
     - [Conclusiones](#conclusiones)
   - [Anexos](#anexos)
 
@@ -65,6 +67,19 @@ Para preprocesar los datos, escalamos a 640*640 pixeles.
 
 Se utilizó un modelo preentrenado YOLOv8 (yolov8l.pt) y se realizó fine-tuning con un conjunto de datos específico de baches. El entrenamiento se llevó a cabo durante 45 épocas con imágenes de tamaño 640x640.
 
+
+Cabe notar que existen diferentes versiones de yolo8
+
+- YOLOv8n (nano)
+- YOLOv8s (small)
+- YOLOv8m (medium)
+- YOLOv8l (large)
+- YOLOv8x (extra-large)
+
+Nosotros probamos yolo8s y yolo8l, pero no fijamos una semilla por lo que los resultados pueden variar, sin embargo es plausible asumir que yolo8l tenga mejor desempeño.
+
+Es necesario fijar una semilla, pues esto puede afectar la inicalización de los pesos, orden de los datos(aunque tengamos una partición fija de los datos en conjuntos de entrenamiento, validación y prueba, el orden en el que los datos se presentan al modelo durante el entrenamiento puede variar.), etc.
+
 ### Funcionamiento del modelo YOLO
 
 YOLO ("You Only Look Once") es una familia de algoritmos de visión por computadora diseñados para la detección de objetos en imágenes y videos en tiempo real. A diferencia de otros métodos de detección, YOLO procesa la imagen completa en una sola pasada por la red neuronal, logrando alta precisión y velocidad. Esta capacidad la hace ideal para aplicaciones como vigilancia, robótica, conducción autónoma y más.
@@ -90,10 +105,46 @@ Distribuciones de probabilidad para cada clase.
 
 La salida del modelo, son coordenadas de bounding boxes, etiquetas de clase y puntajes de confianza.
 
-### Resultados modelo
-Documenta los resultados obtenidos del modelo.
 
-## Pruebas sobre el modelo
+
+## Pruebas sobre el modelo yolo8s
+
+
+### Matriz de confusión.
+
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/confusion_matrix_8s.png" width="50%" />
+</p>
+
+### otras gráficas.
+
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/PR_curve_8s.png" width="50%" />
+</p>
+
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/P_curve_8s.png" width="50%" />
+</p>
+
+Ahora veamos la curva F1
+
+
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/F1_curve_8s.png" width="50%" />
+</p>
+
+
+En general, esta curva sugiere que el modelo tiene un rendimiento aceptable y que el umbral óptimo de confianza está bien definido.
+
+
+veamos como se comporta el modelo con algunas imagenes del conjunto de validación:
+
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/val_batch2_pred_8s.jpg" width="50%" />
+</p>
+
+
+## Pruebas sobre el modelo yolo8l
 
 ### Matriz de confusión.
 
