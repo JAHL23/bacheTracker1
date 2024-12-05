@@ -1,77 +1,107 @@
 # **bacheTracker1**
 
+
+# ![Logo Facultad de Ciencias](images/logoFC85.png) Proyecto - Detección de Malaria de Lacuna
+
+[![Python Version](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
+
+
+[![Ultralytics Version](https://img.shields.io/badge/ultralytics-8.0.56-green.svg)](https://pypi.org/project/ultralytics/8.0.56/)
+
+
+
+**Integrantes**: Jorge Alberto Herrera León / Isaac Daniel Pérez
+
+
+## Entegrables:
+
+1. [Memoria Técnica](dev_model/MEMORIA-TECNICA.md)
+1. [Documentación API](app/documentacion-api.md)
+
+
 ## **Índice**
-1. [Introducción](#introducción)
-2. [Planteamiento del Problema](#planteamiento-del-problema)
-3. [Objetivos](#objetivos)
-   - [General](#objetivo-general)
-   - [Específicos](#objetivos-específicos)
-4. [Metodología](#metodología)
-5. [Tecnología Utilizada](#tecnología-utilizada)
-6. [Impacto del Proyecto](#impacto-del-proyecto)
-7. [Conclusiones Esperadas](#conclusiones-esperadas)
-8. [Referencias](#referencias)
+- [**bacheTracker1**](#bachetracker1)
+- [ Proyecto - Detección de Malaria de Lacuna](#-proyecto---detección-de-malaria-de-lacuna)
+  - [Entegrables:](#entegrables)
+  - [**Índice**](#índice)
+  - [**Introducción**](#introducción)
+  - [**Planteamiento del Problema**](#planteamiento-del-problema)
+  - [**Objetivos**](#objetivos)
+    - [**Objetivo General**](#objetivo-general)
+    - [**Objetivos Específicos**](#objetivos-específicos)
+  - [**Metodología**](#metodología)
+  - [**Tecnología Utilizada**](#tecnología-utilizada)
+  - [**Impacto del Proyecto**](#impacto-del-proyecto)
+  - [**Conclusiones**](#conclusiones)
+  - [**Referencias**](#referencias)
 
 ---
 
 ## **Introducción**
-Los baches en las calles son un problema recurrente que afecta la seguridad vial y el mantenimiento de infraestructuras urbanas. Además de representar un riesgo para los conductores, estos defectos estructurales ocasionan daños significativos a los vehículos, incrementan el riesgo de accidentes y generan costos elevados tanto para los usuarios como para las autoridades responsables del mantenimiento vial.
-
-La detección y clasificación temprana de baches permite a las autoridades tomar medidas preventivas y correctivas de manera eficiente. Este proyecto busca abordar este problema mediante la implementación de un sistema automatizado basado en la tecnología de detección de objetos.
+Los baches en las carreteras representan un problema significativo para la seguridad vial y el mantenimiento de las infraestructuras urbanas. Este proyecto tiene como objetivo desarrollar un modelo para la detección automática de baches utilizando la tecnología YOLOv8.
 
 ---
 
 ## **Planteamiento del Problema**
-El proceso manual de identificación y clasificación de baches es ineficiente, costoso y propenso a errores humanos. Actualmente, la mayoría de las autoridades carecen de herramientas automatizadas que permitan monitorear el estado de las carreteras en tiempo real. Esto dificulta la planificación y ejecución de reparaciones, afectando negativamente la seguridad y calidad de las infraestructuras.
+La detección manual de baches es un proceso ineficiente y propenso a errores. Se requiere una solución automatizada que permita identificar baches en tiempo real para mejorar las condiciones de las carreteras y reducir riesgos.
 
 ---
 
 ## **Objetivos**
 
 ### **Objetivo General**
-Desarrollar un modelo de clasificación de baches en tiempo real utilizando la tecnología YOLO (You Only Look Once) para mejorar la seguridad vial y optimizar el mantenimiento de infraestructuras.
+Desarrollar un modelo de detección automática de baches utilizando YOLOv8 para mejorar la seguridad vial y apoyar en el mantenimiento de infraestructuras.
 
 ### **Objetivos Específicos**
-1. Diseñar e implementar un modelo de detección y clasificación de baches utilizando YOLO.
-2. Evaluar la precisión y eficiencia del modelo en escenarios del mundo real.
-3. Crear una herramienta de monitoreo automatizada que permita a las autoridades identificar áreas críticas con baches.
-4. Proporcionar una solución escalable y adaptable para diferentes entornos urbanos.
+1. Implementar un modelo de detección previamente entrenado en un conjunto de datos específico.
+2. Evaluar el rendimiento del modelo utilizando métricas de precisión y exhaustividad.
+3. Generar visualizaciones y estadísticas del rendimiento del modelo.
+4. Documentar el proceso de desarrollo y los resultados obtenidos.
 
 ---
 
 ## **Metodología**
-1. **Recolección de datos:** Captura de imágenes y videos de carreteras que contengan baches en diversas condiciones climáticas y de iluminación.
-2. **Preprocesamiento:** Limpieza y anotación de los datos para entrenar el modelo YOLO.
-3. **Entrenamiento del modelo:** Ajuste del modelo YOLO para identificar y clasificar baches con alta precisión.
-4. **Evaluación:** Validación del modelo utilizando métricas como precisión, recall y tiempo de inferencia.
-5. **Implementación:** Integración del modelo en un sistema de monitoreo automatizado en tiempo real.
+1. **Recolección de Datos:** Obtención de imágenes de carreteras con baches.
+2. **Implementación del Modelo:** Utilización de YOLOv8 para entrenar el modelo con el conjunto de datos.
+3. **Entrenamiento y Validación:** Configuración de parámetros y entrenamiento del modelo en un entorno de Notebook.
+4. **Análisis de Resultados:** Evaluación del modelo mediante métricas y visualizaciones como la matriz de confusión y curvas de precisión-recall.
 
 ---
 
 ## **Tecnología Utilizada**
-- **Frameworks de IA:** PyTorch, TensorFlow.
-- **Modelo de Detección de Objetos:** YOLO (versión específica, por ejemplo, YOLOv5 o YOLOv8).
-- **Herramientas de Anotación:** LabelImg, Roboflow.
 - **Lenguaje de Programación:** Python.
-- **Interfaz de Usuario:** FastAPI, Streamlit (para visualización de resultados).
-- **Infraestructura:** GPU para entrenamiento y despliegue del modelo.
+- **Notebook de Jupyter:** Google Colab para el desarrollo y entrenamiento del modelo.
+- **Bibliotecas y Herramientas:**
+  - **YOLOv8:** Framework de detección de objetos utilizado para entrenar el modelo.
+  - **Ultralytics:** Librería para implementar YOLOv8.
+  - **Google Colab:** Plataforma para ejecutar notebooks y aprovechar recursos de GPU.
+  - **Roboflow:** Herramienta para gestionar y descargar conjuntos de datos.
+- **Otros:** Librerías estándar de Python y dependencias requeridas por YOLOv8.
+
+---
+
+  El modelo alcanzó un mAP promedio de 0.756, indicando una buena capacidad para detectar baches con precisión aceptable. Las visualizaciones generadas permiten entender mejor el rendimiento y áreas de mejora.
+
+**Resultados y Análisis**
+
+
 
 ---
 
 ## **Impacto del Proyecto**
-- **Social:** Mejora de la seguridad vial y reducción de accidentes causados por baches.
-- **Económico:** Reducción de costos de mantenimiento vehicular y optimización del presupuesto destinado al mantenimiento de carreteras.
-- **Ambiental:** Aumento de la eficiencia en la reparación de carreteras, minimizando el impacto ambiental de reparaciones innecesarias.
+La implementación de este modelo permite:
+- **Mejorar la Seguridad Vial:** Detección temprana de baches para evitar accidentes.
+- **Optimizar Recursos:** Ayudar a las autoridades a priorizar reparaciones y mantenimiento.
+- **Contribuir a la Automatización:** Reducir la dependencia de procesos manuales en la detección de daños en carreteras.
 
 ---
 
-## **Conclusiones Esperadas**
-Este proyecto busca ofrecer una solución automatizada para el monitoreo y clasificación de baches en tiempo real. La implementación del modelo YOLO permitirá a las autoridades tomar decisiones más informadas y ejecutar reparaciones de manera proactiva, contribuyendo a la mejora general de la infraestructura vial y la seguridad de los conductores.
+## **Conclusiones**
+El proyecto demostró la viabilidad de utilizar YOLOv8 para la detección automática de baches con resultados prometedores. La metodología aplicada y las herramientas utilizadas permitieron desarrollar un modelo efectivo que puede ser mejorado con más datos y ajustes adicionales.
 
 ---
 
 ## **Referencias**
-1. Redmon, J., & Farhadi, A. (2018). YOLO: Real-Time Object Detection. 
-2. PyTorch Documentation: https://pytorch.org/docs/stable/index.html
-3. TensorFlow Documentation: https://www.tensorflow.org/docs
-4. Roboflow: Herramientas para anotación y preprocesamiento de datos.
+1. Ultralytics YOLOv8 Documentation: https://docs.ultralytics.com/
+2. Roboflow: https://roboflow.com/
+3. Google Colab: https://colab.research.google.com/
