@@ -10,6 +10,7 @@
   - [Fuentes de información y procedimientos aplicados](#fuentes-de-información-y-procedimientos-aplicados)
     - [Construcción del modelo](#construcción-del-modelo)
     - [Sobre el dataset](#sobre-el-dataset)
+    - [Extracción de datos.](#extracción-de-datos)
     - [Entrenamiento del modelo](#entrenamiento-del-modelo)
     - [Funcionamiento del modelo YOLO](#funcionamiento-del-modelo-yolo)
   - [Arquitectura de YOLO](#arquitectura-de-yolo)
@@ -58,10 +59,22 @@ Una de las ventajas de usar un dataset de Roboflow, es que al momento de descarg
 
 tenemos un total de 665 imagenes, no se realizo data augmentation.
 
+<p align="center">
+  <img src="https://github.com/JAHL23/bacheTracker1/blob/main/images/partition_data.png" width="50%" />
+</p>
+
 
 Solo tenemos un tipo de clase(**bache**).
 
 Para preprocesar los datos, escalamos a 640*640 pixeles.
+
+### Extracción de datos.
+
+Para extraer los datos de **Roboflow** tenemos dos maneras, una manera es usar la API de roboflow, sin embargo es necesario tener una cuenta en la pagina para hacer uso de la API.(**SHow download code**)
+
+
+Otra manera es descargar el dataset(**Download zip to computer**) y subirlo a la nube de drive o usar files de google.colab para poder usar archivos locales en colab.
+
 
 ### Entrenamiento del modelo
 
@@ -182,7 +195,7 @@ veamos como se comporta el modelo con algunas imagenes del conjunto de validaci�
 
 ### Conclusiones
 
-El desarrollo del modelo basado en YOLOv8 para la detección de baches ha demostrado ser una solución efectiva en la identificación de irregularidades en superficies viales. A través del entrenamiento y validación, el modelo alcanzó una precisión máxima de 1.0 a un nivel de confianza de 0.821, lo que indica un alto grado de exactitud en las predicciones realizadas.
+El desarrollo del modelo basado en YOLOv8s para la detección de baches ha demostrado ser una solución efectiva en la identificación de irregularidades en superficies viales. A través del entrenamiento y validación, el modelo alcanzó una precisión máxima de 1.0 a un nivel de confianza de 0.821, lo que indica un alto grado de exactitud en las predicciones realizadas.
 
 Las curvas de precisión y F1 obtenidas sugieren que el modelo mantiene un rendimiento consistente y que el umbral de confianza seleccionado es óptimo para el balance entre precisión y recall. Sin embargo, se reconoce la importancia de continuar ajustando hiperparámetros y ampliando el conjunto de datos para mejorar aún más la capacidad de generalización del modelo.
 
