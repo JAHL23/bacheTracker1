@@ -1,7 +1,7 @@
 # **bacheTracker1**
 
 
-# ![Logo Facultad de Ciencias](images/logoFC85.png) Proyecto - Detección de Malaria de Lacuna
+# ![Logo Facultad de Ciencias](images/logoFC85.png) Proyecto - Detección de Baches en imagenes de caminos viales.
 
 [![Python Version](https://img.shields.io/badge/python-3.10-blue.svg)](https://www.python.org/downloads/release/python-3100/)
 
