@@ -28,7 +28,7 @@
 - **Integrantes**: Jorge Alberto Herrera León / Isaac Daniel Pérez
 
 ## Alcance del proyecto
-Implementar un sistema que pueda detectar baches en tiempo real a partir de imágenes o videos capturados por cámaras, sistema consumible via una API.
+Implementar un sistema que pueda detectar baches en tiempo real a partir de imágenes o videos capturados por cámaras, sistema consumible via una API. (No se pudo implementar para videos aún.)
 
 ### Objetivo
 Este proyecto tiene como objetivo desarrollar un modelo de clasificación de baches en tiempo real utilizando la tecnología YOLO (You Only Look Once). YOLO es una técnica avanzada de detección de objetos que permite identificar y clasificar objetos en imágenes y videos con alta precisión y velocidad. Al implementar este modelo, buscamos proporcionar una herramienta eficaz para la detección automática de baches.
