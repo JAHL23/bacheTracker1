@@ -90,7 +90,7 @@ Cada archivo de anotación es un archivo .txt que corresponde a una imagen y tie
 Los archivos de anotación contienen las etiquetas y las coordenadas de los cuadros delimitadores en el formato YOLO:
 
 **<class_id> <x_center> <y_center>**
-**<$width$> <$height$>**
+**<.width> <.height>**
 
 ### Entrenamiento del modelo
 
