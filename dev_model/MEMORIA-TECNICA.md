@@ -89,7 +89,7 @@ Anotaciones: Se guardan en una carpeta llamada labels, con la misma estructura q
 Cada archivo de anotación es un archivo .txt que corresponde a una imagen y tiene el mismo nombre.
 Los archivos de anotación contienen las etiquetas y las coordenadas de los cuadros delimitadores en el formato YOLO:
 
-**<class_id> <x_center> <y_center> <width> <height>**
+**<class_id>,<x_center>,<y_center>,<width>,<height>**
 
 ### Entrenamiento del modelo
 
